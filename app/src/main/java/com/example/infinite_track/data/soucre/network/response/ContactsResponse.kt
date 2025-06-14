@@ -33,7 +33,6 @@ data class ContactData(
 
 @Parcelize
 data class Actions(
-
     @field:SerializedName("call")
     val call: String? = null,
 

@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import com.example.infinite_track.presentation.components.navigation.BottomBarInternship
 import com.example.infinite_track.presentation.components.navigation.BottomBarStaff
-import com.example.infinite_track.presentation.components.user.home.EmployeeAndManagerComponent
-import com.example.infinite_track.presentation.components.user.home.InternshipContent
+import com.example.infinite_track.presentation.screen.home.content.EmployeeAndManagerComponent
+import com.example.infinite_track.presentation.screen.home.content.InternshipContent
 
 @Composable
 fun MainNavGraph(

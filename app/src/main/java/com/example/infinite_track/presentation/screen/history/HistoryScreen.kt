@@ -43,7 +43,7 @@ import com.example.infinite_track.presentation.components.cards.OverviewCardAtte
 import com.example.infinite_track.presentation.components.empty.EmptyListAnimation
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
 import com.example.infinite_track.presentation.components.tittle.Tittle
-import com.example.infinite_track.presentation.components.user.home.EmployeeViewModel
+import com.example.infinite_track.presentation.screen.home.content.EmployeeViewModel
 import com.example.infinite_track.presentation.core.headline3
 import com.example.infinite_track.presentation.core.headline4
 import com.example.infinite_track.presentation.theme.Infinite_TrackTheme

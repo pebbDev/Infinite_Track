@@ -40,7 +40,7 @@ import com.example.infinite_track.presentation.components.calendar.TodayDateWith
 import com.example.infinite_track.presentation.components.cards.AttendanceHistoryC
 import com.example.infinite_track.presentation.components.empty.EmptyListAnimation
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
-import com.example.infinite_track.presentation.components.user.home.EmployeeViewModel
+import com.example.infinite_track.presentation.screen.home.content.EmployeeViewModel
 import com.example.infinite_track.presentation.core.headline4
 import com.example.infinite_track.utils.UiState
 import com.example.infinite_track.utils.calculateTotalCourse

@@ -1,4 +1,4 @@
-package com.example.infinite_track.presentation.components.user.home
+package com.example.infinite_track.presentation.screen.home.content
 
 import android.util.Log
 import androidx.lifecycle.LiveData

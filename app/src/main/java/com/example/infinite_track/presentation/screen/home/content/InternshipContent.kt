@@ -1,4 +1,4 @@
-package com.example.infinite_track.presentation.components.user.home
+package com.example.infinite_track.presentation.screen.home.content
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,7 +31,6 @@ import com.example.infinite_track.presentation.components.button.SeeAllButton
 import com.example.infinite_track.presentation.components.cards.AttendanceHistoryC
 import com.example.infinite_track.presentation.components.cards.CardAbsence
 import com.example.infinite_track.presentation.components.empty.EmptyListAnimation
-import com.example.infinite_track.presentation.components.images.ImageSlider
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
 import com.example.infinite_track.presentation.components.tittle.Location
 import com.example.infinite_track.presentation.components.tittle.nameCards
