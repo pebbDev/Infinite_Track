@@ -76,6 +76,8 @@ fun EditProfil(
     }
 
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "Edit Profile",
@@ -85,7 +87,6 @@ fun EditProfil(
         }
     ) { innerPadding ->
 
-        StaticBaseLayout()
 
         Box(
             modifier = Modifier

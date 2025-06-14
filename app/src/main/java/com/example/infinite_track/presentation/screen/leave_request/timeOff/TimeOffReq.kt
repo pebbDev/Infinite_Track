@@ -25,13 +25,14 @@ import com.example.infinite_track.R
 import com.example.infinite_track.data.soucre.dummy.Inbox
 import com.example.infinite_track.data.soucre.dummy.dummyTimeOff
 import com.example.infinite_track.presentation.components.button.TabManageButton
-import com.example.infinite_track.presentation.components.base.BaseLayout
-import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.components.cards.CardInbox
 import com.example.infinite_track.presentation.core.headline2
 
 @Composable
-fun TimeOffScreen(cards: List<Inbox>){
+fun TimeOffScreen(
+    cards: List<Inbox>,
+    onBackClick: () -> Unit = {}
+){
     var selectedStatus by remember { mutableStateOf("Pending") }
 
     val pendingCount = dummyTimeOff.count { it.CardStatus == "Pending" }
@@ -47,7 +48,6 @@ fun TimeOffScreen(cards: List<Inbox>){
         }
     }
 
-    StaticBaseLayout()
     Column(
         modifier = Modifier
             .fillMaxSize()

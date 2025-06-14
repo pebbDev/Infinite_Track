@@ -47,7 +47,6 @@ import cn.pedant.SweetAlert.SweetAlertDialog
 import coil.compose.AsyncImage
 import com.example.infinite_track.R
 import com.example.infinite_track.presentation.components.base.BaseLayout
-import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.components.popUp.LanguagePopUp
 import com.example.infinite_track.presentation.core.headline2
 import com.example.infinite_track.presentation.core.headline3
@@ -61,6 +60,7 @@ import com.example.infinite_track.utils.AppLanguageUpdater
 import com.example.infinite_track.utils.DialogHelper
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import androidx.compose.ui.graphics.Color
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -95,10 +95,9 @@ fun ProfileScreen(
     AppLanguageUpdater(language = selectedLanguage)
 
     Scaffold(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent // Tambahkan ini untuk membuat background transparan
     ){
-        StaticBaseLayout()
-
         Box(
             modifier = Modifier
                 .fillMaxSize()

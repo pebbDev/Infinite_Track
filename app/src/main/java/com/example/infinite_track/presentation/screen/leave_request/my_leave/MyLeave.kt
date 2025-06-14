@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -66,6 +67,7 @@ fun MyLeave(
 
     Scaffold(
         modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             Row (
                 modifier = Modifier
@@ -81,7 +83,8 @@ fun MyLeave(
             }
         }
     ){ innerPadding ->
-        StaticBaseLayout()
+
+
         Box(
             modifier = modifier
                 .fillMaxSize()

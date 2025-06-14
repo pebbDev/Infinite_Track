@@ -157,6 +157,7 @@ fun AttendanceScreen(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "Live Attendance",
@@ -165,9 +166,6 @@ fun AttendanceScreen(
             )
         }
     ){ innerPadding ->
-
-        StaticBaseLayout()
-
         Box(
             modifier = Modifier
                 .fillMaxSize()

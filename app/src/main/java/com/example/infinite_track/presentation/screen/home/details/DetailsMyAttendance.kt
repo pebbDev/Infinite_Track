@@ -29,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.infinite_track.data.soucre.network.response.AttendanceHistoryResponseItem
@@ -87,6 +88,7 @@ fun DetailsMyAttendance(
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "My Attendance",
@@ -95,7 +97,6 @@ fun DetailsMyAttendance(
             )
         }
     ) { innerPadding ->
-        StaticBaseLayout()
 
         Box(
             modifier = Modifier

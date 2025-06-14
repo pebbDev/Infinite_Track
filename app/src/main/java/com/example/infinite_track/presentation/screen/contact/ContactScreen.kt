@@ -82,6 +82,7 @@ fun ContactScreen(viewModel: ContactsViewModel = hiltViewModel()) {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             Row(
                 modifier = Modifier
@@ -105,8 +106,6 @@ fun ContactScreen(viewModel: ContactsViewModel = hiltViewModel()) {
             }
         }
     ) { innerPadding ->
-
-        StaticBaseLayout()
 
         Box(
             modifier = Modifier
@@ -168,9 +167,9 @@ fun ContactScreen(viewModel: ContactsViewModel = hiltViewModel()) {
                                         name = contact?.name ?: "-",
                                         position = contact?.positionName ?: "-",
                                         cardImage = fullImageUrl,
-                                        phone = contact?.actions?.call ,
-                                        message = contact?.actions?.email ,
-                                        whatsapp = contact?.actions?.whatsapp ,
+                                        phone = contact?.actions?.call,
+                                        message = contact?.actions?.email,
+                                        whatsapp = contact?.actions?.whatsapp,
                                         onClickCard = {},
                                         messageWA = "Halo ${contact?.name}",
                                         context = context

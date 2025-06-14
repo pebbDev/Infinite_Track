@@ -106,6 +106,7 @@ fun LeaveRequestScreen(
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "Leave Application",
@@ -113,15 +114,13 @@ fun LeaveRequestScreen(
                 modifier = Modifier.padding(top = 12.dp)
             )
         }
-    ){ innerPadding ->
-
-        StaticBaseLayout()
+    ) { innerPadding ->
 
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
-        ){
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -140,7 +139,7 @@ fun LeaveRequestScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 ThriveInInputText(
-                    value = user.headprogramname?: "",
+                    value = user.headprogramname ?: "",
                     placeholder = "Head Program",
                     onChange = {},
                     leadingIcon = painterResource(id = R.drawable.ic_headprogram),
@@ -150,7 +149,7 @@ fun LeaveRequestScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 ThriveInInputText(
-                    value = user.division?: "",
+                    value = user.division ?: "",
                     placeholder = "Division",
                     onChange = {},
                     leadingIcon = painterResource(id = R.drawable.ic_division),
@@ -213,7 +212,7 @@ fun LeaveRequestScreen(
 
                 // Phone Number Input Field
                 PhoneNumberInputText(
-                    value = user.phone_number?: "",
+                    value = user.phone_number ?: "",
                     placeholder = "Phone Number",
                     onChange = {},
                     leadingIcon = painterResource(id = R.drawable.ic_phone)
@@ -223,7 +222,7 @@ fun LeaveRequestScreen(
 
                 // Address Input Field
                 AddressInputField(
-                    address = user.address?: "",
+                    address = user.address ?: "",
                     onAddressChange = {}
                 )
 
@@ -300,17 +299,17 @@ fun LeaveRequestScreen(
                 // Send Button
                 Button(
                     onClick = {
-                        coroutineScope.launch{
+                        coroutineScope.launch {
                             leaveRequestViewModel.handleLeave(
                                 name = user.userName,
-                                headProgramName = user.headprogramname?: "",
-                                division = user.division?: "",
+                                headProgramName = user.headprogramname ?: "",
+                                division = user.division ?: "",
                                 startDate = startDate,
                                 endDate = endDate,
                                 leaveType = selectedLeaveType,
                                 desc = desc,
-                                phone = user.phone_number?: "",
-                                address = user.address?: "",
+                                phone = user.phone_number ?: "",
+                                address = user.address ?: "",
                                 uploadImage = imageUri?.toMultipartBodyPart(
                                     "upload_image",
                                     context
@@ -338,17 +337,18 @@ fun LeaveRequestScreen(
 
         Box(modifier = Modifier.fillMaxSize()) {
             if (currentScreen == Lifecycle.State.RESUMED) {
-                when (leaveRequestState){
+                when (leaveRequestState) {
                     is NetworkResponse.Loading ->
                         Box(
                             modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.Black.copy(alpha = 0.5f))
-                            .zIndex(1f),
+                                .fillMaxSize()
+                                .background(Color.Black.copy(alpha = 0.5f))
+                                .zIndex(1f),
                             contentAlignment = Alignment.Center
                         ) {
                             LoadingAnimation()
                         }
+
                     is NetworkResponse.Success -> {
                         val message =
                             (leaveRequestState as NetworkResponse.Success<LeaveRequestResponse>).data.message

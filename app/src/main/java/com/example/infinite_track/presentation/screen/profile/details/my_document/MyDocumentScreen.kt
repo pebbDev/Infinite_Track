@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.infinite_track.presentation.components.base.StaticBaseLayout
@@ -26,6 +27,8 @@ fun MyDocumentScreen(
     onBackClick: () -> Unit
 ) {
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "My Document",
@@ -34,7 +37,6 @@ fun MyDocumentScreen(
             )
         }
     ) { innerPadding ->
-        StaticBaseLayout()
         Box(
             modifier = Modifier
                 .fillMaxSize()

@@ -55,6 +55,7 @@ fun ContactUsScreen(
     onBackClick: () -> Unit,
 ) {
     Scaffold(
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "Contact Us",
@@ -63,8 +64,6 @@ fun ContactUsScreen(
             )
         }
     ) { innerPadding ->
-
-        StaticBaseLayout()
 
         Box(
             modifier = Modifier

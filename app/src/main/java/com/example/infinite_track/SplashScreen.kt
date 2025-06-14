@@ -45,7 +45,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        BaseLayout()
+//        BaseLayout()
         LottieAnimation(composition = composition, modifier = Modifier.fillMaxSize())
     }
 }

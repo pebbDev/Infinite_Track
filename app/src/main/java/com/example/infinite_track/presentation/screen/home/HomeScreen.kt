@@ -9,8 +9,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import com.example.infinite_track.domain.model.userdata.UserModel
-import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.screen.home.content.EmployeeAndManagerComponent
 import com.example.infinite_track.presentation.screen.home.content.InternshipContent
 
@@ -29,8 +29,8 @@ fun HomeScreen(
     Scaffold(
         modifier = modifier
             .fillMaxSize(),
+        containerColor = Color.Transparent,
         content = {
-            StaticBaseLayout()
             Box(
                 modifier = modifier
                     .fillMaxSize()

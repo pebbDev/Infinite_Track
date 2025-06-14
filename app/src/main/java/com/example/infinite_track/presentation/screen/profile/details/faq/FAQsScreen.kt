@@ -57,6 +57,8 @@ fun FAQCategoryList(
     onBackClick: () -> Unit,
 ) {
     Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        containerColor = Color.Transparent,
         topBar = {
             InfiniteTracButtonBack(
                 title = "Frequently Asked Questions",
@@ -65,8 +67,6 @@ fun FAQCategoryList(
             )
         }
     ) { innerPadding ->
-
-        StaticBaseLayout()
 
         Box(
             modifier = Modifier
