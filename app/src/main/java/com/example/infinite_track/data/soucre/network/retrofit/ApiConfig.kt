@@ -44,7 +44,6 @@ class ApiConfig @Inject constructor() {
             .build()
         return retrofit.create(ApiService::class.java)
     }
-
 }
 
 private fun getTokenFromContext(context: Context): String {
@@ -63,5 +62,5 @@ private val baseUrl: String
     get() = if (isEmulator()) {
         "http://10.0.2.2:3000"
     } else {
-        "http://50.0.0.238:3000"
+        "http://192.168.27.197:3000"
     }

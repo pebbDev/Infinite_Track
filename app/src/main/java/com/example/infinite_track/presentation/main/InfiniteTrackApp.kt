@@ -26,7 +26,8 @@ import com.example.infinite_track.domain.model.profile.faqsList
 import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.components.button.customfab.CustomFAB
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
-import com.example.infinite_track.presentation.navigation.BottomBarCore
+import com.example.infinite_track.presentation.components.navigation.BottomBarInternship
+import com.example.infinite_track.presentation.components.navigation.BottomBarStaff
 import com.example.infinite_track.presentation.navigation.Screen
 import com.example.infinite_track.presentation.screen.attendance.AttendanceScreen
 import com.example.infinite_track.presentation.screen.auth.AuthViewModel
@@ -56,44 +57,44 @@ fun InfiniteTrackApp(
     profileViewModel: ProfileViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
-    val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route ?: ""
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route ?: ""
 
     val user by authViewModel.getUser().observeAsState()
+    val userRole = user?.userRole ?: ""
 
-    val hideBottomBarRoutes = listOf(
+    val screensWithoutBottomBar = listOf(
+        Screen.Login.route,
+        Screen.Splash.route,
         Screen.Attendance.route,
-        Screen.DetailMyAttendance.route,
         Screen.EditProfile.route,
+        Screen.DetailMyAttendance.route,
         Screen.DetailListTimeOff.route,
         Screen.TimeOffRequest.route,
         Screen.FAQ.route
     )
 
-    val hideInnerPaddingRoutes = listOf(
-        Screen.Attendance.route,
-        Screen.EditProfile.route,
-        Screen.DetailMyAttendance.route,
-        Screen.DetailListTimeOff.route,
-        Screen.History.route,
-        Screen.TimeOffRequest.route
-    )
+    val isBottomBarVisible = currentRoute !in screensWithoutBottomBar
 
     Scaffold(
-        modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         containerColor = Color.Transparent,
         bottomBar = {
-            if (currentRoute !in hideBottomBarRoutes) {
-                BottomBarCore(user = user?.userRole ?: "", navController = navController)
+            if (isBottomBarVisible) {
+                when (userRole) {
+                    "Internship" -> BottomBarInternship(navController = navController)
+                    "Admin", "Employee", "Management" -> BottomBarStaff(navController = navController)
+                    else -> {}
+                }
             }
         },
         floatingActionButton = {
-            if (currentRoute !in hideBottomBarRoutes) {
-                CustomFAB(currentRoute = currentRoute) {
-                    when (user?.userRole) {
+            if (isBottomBarVisible && (userRole == "Management" || userRole == "Internship")) {
+                CustomFAB(userRole = userRole) {
+                    when (userRole) {
                         "Internship" -> navController.safeNavigate(Screen.Attendance.route)
                         "Management" -> navController.safeNavigate(Screen.TimeOffReq.route)
-                        else -> Toast.makeText(context, "Role not recognized", Toast.LENGTH_SHORT)
-                            .show()
+                        else -> Toast.makeText(context, "Role not recognized", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -105,13 +106,13 @@ fun InfiniteTrackApp(
             modifier = Modifier
                 .fillMaxSize()
                 .then(
-                    if (currentRoute !in hideInnerPaddingRoutes) Modifier.padding(innerPadding)
+                    if (currentRoute !in screensWithoutBottomBar) Modifier.padding(innerPadding)
                     else Modifier.systemBarsPadding()
                 )
         ) {
             NavHost(
                 navController = navController,
-                startDestination = if (user?.token != "null") Screen.Home.route else Screen.Login.route,
+                startDestination = if (user?.token != "null" && user?.token != null) Screen.Home.route else Screen.Login.route,
             ) {
                 composable(Screen.Login.route) {
                     LoginScreen(navigateToHome = {
@@ -188,11 +189,6 @@ fun InfiniteTrackApp(
                             user = currentUser
                         )
                     }
-                }
-                composable(Screen.DetailListTimeOff.route) {
-                    DetailsTimeOffRequest(
-                        onBackClick = { navController.safeNavigate(Screen.Home.route) }
-                    )
                 }
                 composable(Screen.DetailMyAttendance.route) {
                     DetailsMyAttendance(

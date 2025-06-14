@@ -9,13 +9,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.infinite_track.R
-import com.example.infinite_track.presentation.screen.auth.AuthViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -32,19 +26,6 @@ import kotlin.math.cos
 import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.math.sqrt
-
-data class FabAttributes(val icon: Int, val isVisible: Boolean)
-
-@Composable
-fun getFabAttributesByRole(authViewModel: AuthViewModel = hiltViewModel()): FabAttributes {
-    val user by authViewModel.getUser().observeAsState()
-
-    return when (user?.userRole) {
-        "Internship" -> FabAttributes(R.drawable.ic_intern_fab, true)
-        "Management" -> FabAttributes(R.drawable.ic_management, true)
-        else -> FabAttributes(0, false)
-    }
-}
 
 fun showToast(context: Context, @StringRes messageResId: Int, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(context, context.getString(messageResId), duration).show()
@@ -196,7 +177,8 @@ fun formatApiDate(apiDate: String?): String {
 fun formatApiDateHome(apiDate: String?): String {
     return try {
         val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
-        val outputFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()) // Format yang diinginkan
+        val outputFormat =
+            SimpleDateFormat("dd MMM yyyy", Locale.getDefault()) // Format yang diinginkan
         val date = inputFormat.parse(apiDate ?: "")
         outputFormat.format(date ?: Date())
     } catch (e: Exception) {

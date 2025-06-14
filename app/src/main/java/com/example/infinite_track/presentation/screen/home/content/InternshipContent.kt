@@ -31,6 +31,7 @@ import com.example.infinite_track.presentation.components.button.SeeAllButton
 import com.example.infinite_track.presentation.components.cards.AttendanceHistoryC
 import com.example.infinite_track.presentation.components.cards.CardAbsence
 import com.example.infinite_track.presentation.components.empty.EmptyListAnimation
+import com.example.infinite_track.presentation.components.images.ImageSlider
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
 import com.example.infinite_track.presentation.components.tittle.Location
 import com.example.infinite_track.presentation.components.tittle.nameCards
@@ -125,7 +126,7 @@ fun InternshipContent(
             }
 
             Spacer(modifier = Modifier.height(6.dp))
-//            ImageSlider()
+            ImageSlider()
             Spacer(modifier = Modifier.height(12.dp))
 
             SeeAllButton(

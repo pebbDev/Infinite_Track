@@ -1,7 +1,7 @@
 package com.example.infinite_track.presentation.components.images
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,17 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.example.infinite_track.domain.model.dummySliderImage
+import coil.compose.AsyncImage
+import com.example.infinite_track.data.soucre.dummy.dummySliderItems
 import com.example.infinite_track.presentation.components.pager.PagerIndicatorContent
 import com.example.infinite_track.presentation.core.headline4
 import com.example.infinite_track.presentation.theme.Blue_500
 import com.example.infinite_track.presentation.theme.Infinite_TrackTheme
 import com.example.infinite_track.presentation.theme.Purple_100
-import com.example.infinite_track.presentation.theme.Violet_50
 import kotlinx.coroutines.delay
 
 
@@ -39,35 +38,37 @@ import kotlinx.coroutines.delay
 @Composable
 fun ImageSlider() {
     val pagerState = rememberPagerState(pageCount = {
-        dummySliderImage.size
+        dummySliderItems.size
     })
-    val sliderTexts = listOf("Infinite Learning", "Altera Academy", "Bangkit Academy","Dicoding")
+
     Column {
         HorizontalPager(
             pageSpacing = 4.dp,
             state = pagerState,
-            modifier = Modifier
-                .padding(bottom = 6.dp)
+            modifier = Modifier.padding(bottom = 6.dp)
         ) { page ->
+            val item = dummySliderItems[page]
+
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(12.dp))
                     .height(115.dp)
                     .fillMaxWidth()
             ) {
-                Image(
-                    painter = painterResource(dummySliderImage[page].image),
-                    contentDescription = null,
+                AsyncImage(
+                    model = item.imageUrl,
+                    contentDescription = item.title,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .fillMaxSize(),
-                    contentScale = ContentScale.Crop
+                        .fillMaxSize()
+                        .background(Color.LightGray) // Placeholder abu-abu saat loading
                 )
                 Text(
-                    text = sliderTexts[page],
+                    text = item.title,
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .padding(8.dp),
-                    color = Violet_50,
+                    color = Color.White,
                     style = headline4
                 )
             }
@@ -81,12 +82,10 @@ fun ImageSlider() {
         )
     }
 
-    LaunchedEffect(Unit) {
-        while (true) {
-            delay(4000)
-            val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
-            pagerState.animateScrollToPage(nextPage)
-        }
+    LaunchedEffect(pagerState.currentPage) {
+        delay(4000)
+        val nextPage = (pagerState.currentPage + 1) % pagerState.pageCount
+        pagerState.animateScrollToPage(nextPage)
     }
 }
 

@@ -18,6 +18,6 @@
         <domain includeSubdomains="true">50.0.0.248</domain>
         <domain includeSubdomains="true">50.0.0.231</domain>
         <domain includeSubdomains="true">192.168.110.45</domain>
-        <domain includeSubdomains="true">192.168.146.1</domain>
+        <domain includeSubdomains="true">192.168.27.197</domain>
     </domain-config>
 </network-security-config>
