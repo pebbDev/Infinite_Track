@@ -15,6 +15,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -86,6 +87,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.firebase.messaging)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
