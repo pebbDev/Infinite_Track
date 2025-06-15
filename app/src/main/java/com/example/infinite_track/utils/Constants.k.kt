@@ -17,7 +17,6 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
@@ -31,18 +30,42 @@ fun showToast(context: Context, @StringRes messageResId: Int, duration: Int = To
     Toast.makeText(context, context.getString(messageResId), duration).show()
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 fun getCurrentDate(): String {
-    val currentDate = LocalDate.now()
+    val calendar = Calendar.getInstance()
 
-    val dayOfWeek = currentDate.dayOfWeek
-    val dayOfMonth = currentDate.dayOfMonth
-    val month = currentDate.month
-    val year = currentDate.year
+    val dayOfWeek = when (calendar.get(Calendar.DAY_OF_WEEK)) {
+        Calendar.MONDAY -> "Monday"
+        Calendar.TUESDAY -> "Tuesday"
+        Calendar.WEDNESDAY -> "Wednesday"
+        Calendar.THURSDAY -> "Thursday"
+        Calendar.FRIDAY -> "Friday"
+        Calendar.SATURDAY -> "Saturday"
+        Calendar.SUNDAY -> "Sunday"
+        else -> ""
+    }
+
+    val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+
+    val month = when (calendar.get(Calendar.MONTH)) {
+        Calendar.JANUARY -> "January"
+        Calendar.FEBRUARY -> "February"
+        Calendar.MARCH -> "March"
+        Calendar.APRIL -> "April"
+        Calendar.MAY -> "May"
+        Calendar.JUNE -> "June"
+        Calendar.JULY -> "July"
+        Calendar.AUGUST -> "August"
+        Calendar.SEPTEMBER -> "September"
+        Calendar.OCTOBER -> "October"
+        Calendar.NOVEMBER -> "November"
+        Calendar.DECEMBER -> "December"
+        else -> ""
+    }
+
+    val year = calendar.get(Calendar.YEAR)
 
     return "$dayOfWeek, $dayOfMonth $month $year"
 }
-
 
 fun formatAttendanceDate(attendanceDate: String?): Pair<String, String> {
     if (attendanceDate.isNullOrEmpty()) return "" to ""
@@ -201,7 +224,3 @@ fun Uri.toMultipartBodyPart(partName: String, context: Context): MultipartBody.P
 
     return MultipartBody.Part.createFormData(partName, file.name, requestBody)
 }
-
-
-
-

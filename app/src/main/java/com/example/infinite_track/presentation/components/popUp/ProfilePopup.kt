@@ -40,7 +40,9 @@ fun LanguagePopUp(
 
     if (showDialog) {
         AlertDialog(
-            modifier = Modifier.width(325.dp).height(300.dp),
+            modifier = Modifier
+                .width(325.dp)
+                .height(300.dp),
             onDismissRequest = { onDismiss() },
             title = { Text(text = stringResource(R.string.select_language)) },
             text = {
@@ -92,7 +94,6 @@ fun LanguagePopUp(
 }
 
 
-
 @Composable
 fun ButtonPop(
     modifier: Modifier = Modifier,
@@ -100,7 +101,7 @@ fun ButtonPop(
     label: String,
     enabled: Boolean = true,
     isOutline: Boolean,
-){
+) {
     Button(
         onClick = {
             onClick()
@@ -126,7 +127,9 @@ fun ButtonPop(
         },
         border = if (isOutline) BorderStroke(1.dp, Blue_500) else null,
         enabled = enabled,
-        elevation = if (isOutline) ButtonDefaults.elevatedButtonElevation(0.dp) else ButtonDefaults.buttonElevation(4.dp),
+        elevation = if (isOutline) ButtonDefaults.elevatedButtonElevation(0.dp) else ButtonDefaults.buttonElevation(
+            4.dp
+        ),
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,

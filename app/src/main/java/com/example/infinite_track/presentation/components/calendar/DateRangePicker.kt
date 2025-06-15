@@ -11,6 +11,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
@@ -59,4 +60,15 @@ fun DateRangePickerModal(
                 .padding(16.dp)
         )
     }
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+fun DateRangePickerModalPreview() {
+    DateRangePickerModal(
+        onDateRangeSelected = { },
+        onDismiss = { }
+    )
 }

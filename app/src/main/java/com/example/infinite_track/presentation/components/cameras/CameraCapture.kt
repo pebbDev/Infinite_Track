@@ -1,4 +1,4 @@
-package com.example.infinite_track.presentation.components.camerax
+package com.example.infinite_track.presentation.components.cameras
 
 
 import android.content.Context

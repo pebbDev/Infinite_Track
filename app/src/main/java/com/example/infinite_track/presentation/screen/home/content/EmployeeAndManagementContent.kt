@@ -1,6 +1,8 @@
 package com.example.infinite_track.presentation.screen.home.content
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -45,6 +47,7 @@ import com.example.infinite_track.utils.formatDate
 import com.example.infinite_track.utils.getCurrentDate
 import com.example.infinite_track.utils.isInternetAvailable
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun EmployeeAndManagerComponent(
@@ -103,7 +106,6 @@ fun EmployeeAndManagerComponent(
 
                 Spacer(modifier.height(12.dp))
 
-                // Kartu Menu
                 MenuCard(
                     annualBalance = userData.annualBalance,
                     annualUsed = userData.annualUsed,

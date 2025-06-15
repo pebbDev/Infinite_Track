@@ -51,10 +51,9 @@ import com.example.infinite_track.data.soucre.NetworkResponse
 import com.example.infinite_track.data.soucre.network.response.LeaveRequestResponse
 import com.example.infinite_track.domain.model.userdata.UserModel
 import com.example.infinite_track.presentation.components.address.AddressInputField
-import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.components.button.InfiniteTracButtonBack
 import com.example.infinite_track.presentation.components.calendar.Date
-import com.example.infinite_track.presentation.components.camerax.CameraCapture
+import com.example.infinite_track.presentation.components.cameras.CameraCapture
 import com.example.infinite_track.presentation.components.leave_balance_view.LeaveBalanceView
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
 import com.example.infinite_track.presentation.components.textfield.InfiniteTrackDropDown

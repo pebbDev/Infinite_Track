@@ -74,3 +74,8 @@ val Violet_900 = Color(0xFF4A474E)
 
 val Text = Color(0xFF2F2530)
 val White = Color(0xFFFFFFFF)
+
+val Green_Success = Color(0xFF56EBA1) // Success state color
+val Blue_Info = Color(0xFF214CE0)     // Information state color
+val Yellow_Warning = Color(0xFFFDE172) // Warning state color
+val Red_Error = Color(0xFFFF5C5C)     // Error state color

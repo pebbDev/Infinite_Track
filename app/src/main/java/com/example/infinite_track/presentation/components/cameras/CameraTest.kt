@@ -31,7 +31,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.example.infinite_track.R
-import com.example.infinite_track.presentation.components.camerax.CameraCapture
 import com.example.infinite_track.utils.showToast
 
 @Composable

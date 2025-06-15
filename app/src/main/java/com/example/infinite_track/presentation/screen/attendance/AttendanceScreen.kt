@@ -57,10 +57,9 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.infinite_track.R
 import com.example.infinite_track.data.soucre.NetworkResponse
 import com.example.infinite_track.data.soucre.network.response.AttendanceResponse
-import com.example.infinite_track.presentation.components.base.StaticBaseLayout
 import com.example.infinite_track.presentation.components.button.InfiniteTracButtonBack
 import com.example.infinite_track.presentation.components.button.TabButton
-import com.example.infinite_track.presentation.components.camerax.CameraCapture
+import com.example.infinite_track.presentation.components.cameras.CameraCapture
 import com.example.infinite_track.presentation.components.loading.LoadingAnimation
 import com.example.infinite_track.presentation.components.tittle.AttendanceDate
 import com.example.infinite_track.presentation.components.tittle.LocalTimeText
@@ -76,7 +75,6 @@ import com.example.infinite_track.utils.DialogHelper.showDialogWarning
 import com.example.infinite_track.utils.RequestLocationPermission
 import com.example.infinite_track.utils.getCurrentDate
 import com.example.infinite_track.utils.toMultipartBodyPart
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 
 

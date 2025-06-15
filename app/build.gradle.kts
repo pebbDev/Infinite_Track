@@ -1,3 +1,13 @@
+import java.util.Properties
+
+// Kode untuk membaca local.properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+val mapboxAccessToken: String = localProperties.getProperty("MAPBOX_ACCESS_TOKEN") ?: ""
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -13,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.infinite_track"
-        minSdk = 26
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -22,6 +32,9 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        // Add Mapbox access token to manifest
+        manifestPlaceholders["MAPBOX_ACCESS_TOKEN"] = mapboxAccessToken
     }
 
     buildTypes {
@@ -134,4 +147,8 @@ dependencies {
 
     // Accompanist Permissions (untuk handling permissions di Compose)
     implementation(libs.accompanist.permissions)
+
+    // Mapbox
+    implementation(libs.mapboxMapsSdk)
+    implementation(libs.mapboxMapsComposeExtension) // Added Mapbox Compose Extension
 }
